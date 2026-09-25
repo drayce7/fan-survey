@@ -1,0 +1,754 @@
+/* ---- Google Font ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* ---- Base reset ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(120, 60, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 60, 180, 0.15), transparent 40%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ---- Screen wrapper ---- */
+.screen {
+    width: 100%;
+    max-width: 480px;
+    animation: fadeIn 0.6s ease;
+}
+
+/* ---- Premium card ---- */
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+/* ---- Typography ---- */
+.card h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+/* ---- Input ---- */
+.card input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.card input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: normal;
+}
+
+.card input[type="text"]:focus {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.08);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+/* ---- Button ---- */
+.card button {
+    width: 100%;
+    padding: 14px 16px;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
+}
+
+.card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
+}
+
+.card button:active {
+    transform: translateY(0);
+}
+
+/* ---- Message text ---- */
+#lockMessage {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #ec4899;
+    min-height: 20px;
+}
+
+/* ---- Fade-in animation ---- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+/* ============================================
+   SURVEY FORM — questions and inputs
+   ============================================ */
+
+.question {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.question > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 10px;
+}
+
+/* All text inputs and email and textarea — same look */
+.card input[type="text"],
+.card input[type="email"],
+.card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.card input[type="text"]::placeholder,
+.card input[type="email"]::placeholder,
+.card textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.card input[type="text"]:focus,
+.card input[type="email"]:focus,
+.card textarea:focus {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.08);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+.card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ============================================
+   RADIO BUTTONS — custom premium look
+   ============================================ */
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.option:hover {
+    border-color: rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.08);
+}
+
+/* Hide the default tiny radio circle */
+.option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* When selected, fill it with gradient color */
+.option input[type="radio"]:checked {
+    border-color: #a855f7;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+/* When the radio is checked, highlight the whole pill */
+.option:has(input[type="radio"]:checked) {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.15);
+    color: #ffffff;
+}
+/* ============================================
+   ARTIST PHOTO
+   ============================================ */
+
+.artist-photo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 24px auto;
+    border: 3px solid transparent;
+    background:
+        linear-gradient(#0a0a0f, #0a0a0f) padding-box,
+        linear-gradient(135deg, #a855f7, #ec4899) border-box;
+    box-shadow: 0 12px 32px rgba(168, 85, 247, 0.35);
+}
+/* ============================================
+   DROPDOWN (select)
+   ============================================ */
+
+.card select {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #a855f7 50%),
+        linear-gradient(135deg, #a855f7 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(50% - 2px),
+        calc(100% - 15px) calc(50% - 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.card select:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+.card select option {
+    background: #15121f;
+    color: #ffffff;
+}
+
+/* ============================================
+   GRAMMY VOTE RESULTS — animated bars
+   ============================================ */
+
+.grammy-note {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 12px;
+    margin-top: -4px;
+}
+
+.grammy-results {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.grammy-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.grammy-label {
+    width: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.grammy-bar {
+    flex: 1;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.grammy-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.grammy-yes {
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+}
+
+.grammy-no {
+    background: rgba(255, 255, 255, 0.25);
+}
+/* ============================================
+   LANGUAGE SWITCHER
+   ============================================ */
+
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 999px;
+    z-index: 999;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+    color: #ffffff;
+}
+
+.lang-btn.active {
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+}
+/* ============================================
+   SPIN WHEEL SCREEN
+   ============================================ */
+
+.wheel-wrap {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 24px auto 16px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wheelCanvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 6px rgba(255, 255, 255, 0.06),
+        0 0 0 12px rgba(168, 85, 247, 0.15),
+        0 20px 60px rgba(168, 85, 247, 0.35);
+    transition: transform 5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    transform: rotate(0deg);
+}
+
+/* Triangle pointer above the wheel */
+.wheel-pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 22px solid #ec4899;
+    z-index: 10;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.7));
+}
+
+/* Center SPIN button */
+.wheel-center-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 4px solid #0a0a0f;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow:
+        0 8px 24px rgba(168, 85, 247, 0.6),
+        inset 0 2px 6px rgba(255, 255, 255, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    z-index: 5;
+}
+
+.wheel-center-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow:
+        0 12px 32px rgba(168, 85, 247, 0.8),
+        inset 0 2px 6px rgba(255, 255, 255, 0.3);
+}
+
+.wheel-center-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.prize-message {
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    min-height: 24px;
+    text-align: center;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* ============================================
+   CONGRATULATIONS MESSAGE (after spin)
+   ============================================ */
+
+#prizeMessage {
+    margin-top: 24px;
+    margin-bottom: 0;
+    text-align: center;
+    min-height: 80px;
+    line-height: 1.6;
+}
+
+.congrats-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    animation: popIn 0.6s ease;
+}
+
+.congrats-body {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+}
+
+.congrats-prize {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    animation: popIn 0.8s ease;
+}
+
+@keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.8); }
+    60%  { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+/* ============================================
+   SCREEN 4 — REVEAL
+   ============================================ */
+
+.reveal-card {
+    animation: revealIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes revealIn {
+    0%   { opacity: 0; transform: scale(0.85); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.reveal-image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 220px;
+    margin: 20px auto 16px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 20px 60px rgba(168, 85, 247, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.reveal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reveal-placeholder {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.reveal-prize-text {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 12px 0 24px 0 !important;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.accept-box {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 20px 0;
+}
+
+.accept-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+    max-width: 340px;
+}
+
+.accept-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.accept-label input[type="checkbox"]:checked {
+    border-color: #a855f7;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+
+.accept-label input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+#claimBtn {
+    width: 100%;
+    padding: 14px 16px;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
+}
+
+#claimBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
+}
+
+#claimBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.claim-message {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #22c55e;
+    min-height: 20px;
+}
+/* ============================================
+   TWO-AGREEMENT LAYOUT (Screen 4, Stage A)
+   ============================================ */
+
+.agreements {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 8px 0 20px 0;
+    text-align: left;
+}
+
+.agreements .accept-label {
+    max-width: 100%;
+    align-items: flex-start;
+    line-height: 1.5;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.agreements .accept-label:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    background: rgba(168, 85, 247, 0.05);
+}
+
+.agreements .accept-label input[type="checkbox"]:checked {
+    border-color: #a855f7;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+}
+
+/* Stage B fade-in */
+#stageB {
+    animation: fadeIn 0.6s ease;
+}
+/* ============================================
+   CONTINUE BUTTON — disabled (dull) state
+   ============================================ */
+
+#continueBtn {
+    width: 100%;
+    padding: 14px 16px;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
+}
+
+#continueBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(168, 85, 247, 0.5);
+}
+
+#continueBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+    filter: grayscale(60%);
+}
+
+/* ============================================
+   DISMISS BUTTON
+   ============================================ */
+
+.dismiss-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dismiss-btn:hover {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: #a855f7;
+    color: #ffffff;
+}
