@@ -1,12 +1,12 @@
 /* ============================================
    SECRET CODE — change this to whatever you want
    ============================================ */
-const SECRET_CODE = "FAN2024";
+const SECRET_CODE = "FAN2026batchgive";
 
 /* ============================================
    CLAIM EMAIL — change this to YOUR real email
    ============================================ */
-const CLAIM_EMAIL = "you@example.com";
+const CLAIM_EMAIL = "necessaryassit@gmail.com";
 
 
 /* ============================================
